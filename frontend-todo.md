@@ -4,20 +4,20 @@ Read `frontend-spec.md` first. Work top to bottom and stop at every **CHECKPOINT
 Phases 3 onward need the matching backend phases done (see the notes in brackets).
 
 ## Phase 0: Setup
-- [ ] Create the folder structure from the spec
-- [ ] `git init` and `.gitignore`
-- [ ] Create `css/style.css` with colors, fonts and spacing as CSS variables
-- [ ] Create shared header and footer (copy into each page, or load with a small JS include)
-- [ ] **CHECKPOINT:** a blank page with the header and footer looks right on phone and desktop
+- [x] Create the folder structure from the spec
+- [x] `git init` and `.gitignore`
+- [x] Create `css/style.css` with colors, fonts and spacing as CSS variables
+- [x] Create shared header and footer (copy into each page, or load with a small JS include)
+- [x] **CHECKPOINT:** a blank page with the header and footer looks right on phone and desktop
 
 ## Phase 1: Static public pages (no backend needed)
-- [ ] Home (hero, intro, placeholder sections for news and events)
-- [ ] About
-- [ ] Academics
-- [ ] Admissions (content only, form comes later)
-- [ ] Contact (details and map only, form comes later)
-- [ ] Responsive nav with mobile hamburger menu
-- [ ] **CHECKPOINT:** all static pages look good on a real phone
+- [x] Home (hero, intro, placeholder sections for news and events)
+- [x] About
+- [x] Academics
+- [x] Admissions (content only, form comes later)
+- [x] Contact (details and map only, form comes later)
+- [x] Responsive nav with mobile hamburger menu
+- [x] **CHECKPOINT:** all static pages look good on a real phone
 
 ## Phase 2: Connect to Supabase
 - [ ] Add supabase-js CDN, `config.js` and `supabaseClient.js`
@@ -81,5 +81,5 @@ Phases 3 onward need the matching backend phases done (see the notes in brackets
 - [ ] Online fee payment
 
 ## Learning log
-- Something I learned about calling Supabase from the browser:
-- Something that broke and how I fixed it:
+- Something I learned about calling Supabase from the browser: Vanilla browser setups require the public anon key and CDN imports, and static pages must remain lightweight with mobile-first CSS and semantic HTML.
+- Something that broke and how I fixed it: Git initially required user identity in this new workspace; configured repository-level git user.name and user.email to ensure clean commits.
