@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events & Calendar | St. Augustine International Academy</title>
+  <meta name="description" content="View upcoming academic events, parent-teacher conferences, and celebrations at St. Augustine International Academy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-topbar">
+      <div class="container">
+        <div class="topbar-info">
+          <span>📍 14 Heritage Way, Victoria Island, Lagos</span>
+          <a href="tel:+2348012345678">📞 +234 801 234 5678</a>
+          <a href="mailto:admissions@staugustine.edu">✉️ admissions@staugustine.edu</a>
+        </div>
+        <div class="topbar-links">
+          <span>🕒 Mon - Fri: 7:30 AM - 4:30 PM</span>
+          <a href="admin/login.html">🔒 Staff Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="header-main">
+        <a href="index.html" class="brand" aria-label="St. Augustine International Academy Home">
+          <div class="brand-crest" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">St. Augustine</span>
+            <span class="brand-motto">International Academy</span>
+          </div>
+        </a>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <nav id="primary-navigation" class="nav-menu" aria-label="Main Navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="academics.html" class="nav-link">Academics</a>
+          <a href="admissions.html" class="nav-link">Admissions</a>
+          <a href="news.html" class="nav-link">News</a>
+          <a href="events.html" class="nav-link active">Events</a>
+          <a href="gallery.html" class="nav-link">Gallery</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="admissions.html" class="btn btn-primary btn-sm nav-cta">Apply Now</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span aria-current="page">Events</span>
+        </nav>
+        <h1 class="page-hero-title">Academic & Campus Events</h1>
+        <p class="page-hero-desc">Discover upcoming open days, sports events, and arts presentations.</p>
+      </div>
+    </section>
+
+    <section class="section section-white">
+      <div class="container">
+        <div class="info-box" style="margin-bottom: 2rem;">
+          <div class="info-box-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span>Live Events Feed Coming in Phase 3</span>
+          </div>
+          <p style="margin-bottom: 0;">This section will dynamically load upcoming events from the Supabase <code>events</code> table sorted chronologically.</p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-gold">🗓️ Sat, Nov 14, 2026</span>
+                <span>9:00 AM - 1:00 PM</span>
+              </div>
+              <h3 class="card-title">Annual Open House & Campus Discovery Tour</h3>
+              <p class="card-desc">Prospective parents and children are invited to tour science labs, art studios, meet teachers, and experience classroom demos.</p>
+              <div class="card-footer">
+                <span style="font-size: 0.85rem; color: var(--color-text-muted);">📍 Main Auditorium</span>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-gold">🗓️ Thu, Nov 26, 2026</span>
+                <span>2:00 PM - 5:00 PM</span>
+              </div>
+              <h3 class="card-title">First Term Parent-Teacher Academic Conference</h3>
+              <p class="card-desc">An interactive session for parents and subject tutors to review mid-term academic progress and personalized learning goals.</p>
+              <div class="card-footer">
+                <span style="font-size: 0.85rem; color: var(--color-text-muted);">📍 Classrooms & Hall</span>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-gold">🗓️ Fri, Dec 11, 2026</span>
+                <span>5:30 PM - 8:00 PM</span>
+              </div>
+              <h3 class="card-title">Christmas Carol & Orchestral Concert</h3>
+              <p class="card-desc">Celebrate the festive season with musical renditions, choral harmonies, and theatrical performances by our academy students.</p>
+              <div class="card-footer">
+                <span style="font-size: 0.85rem; color: var(--color-text-muted);">📍 College Chapel</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2026</span> St. Augustine International Academy. All rights reserved.</p>
+        <p><a href="index.html" style="color: var(--color-accent);">Return to Homepage</a></p>
+      </div>
+    </div>
+  </footer>
+  <script src="js/public.js"></script>
+</body>
+</html>

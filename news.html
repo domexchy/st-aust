@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News & Announcements | St. Augustine International Academy</title>
+  <meta name="description" content="Stay up to date with the latest academic milestones, student achievements, and notices from St. Augustine International Academy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Shared Site Header -->
+  <header class="site-header">
+    <div class="header-topbar">
+      <div class="container">
+        <div class="topbar-info">
+          <span>📍 14 Heritage Way, Victoria Island, Lagos</span>
+          <a href="tel:+2348012345678">📞 +234 801 234 5678</a>
+          <a href="mailto:admissions@staugustine.edu">✉️ admissions@staugustine.edu</a>
+        </div>
+        <div class="topbar-links">
+          <span>🕒 Mon - Fri: 7:30 AM - 4:30 PM</span>
+          <a href="admin/login.html">🔒 Staff Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="header-main">
+        <a href="index.html" class="brand" aria-label="St. Augustine International Academy Home">
+          <div class="brand-crest" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">St. Augustine</span>
+            <span class="brand-motto">International Academy</span>
+          </div>
+        </a>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <nav id="primary-navigation" class="nav-menu" aria-label="Main Navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="academics.html" class="nav-link">Academics</a>
+          <a href="admissions.html" class="nav-link">Admissions</a>
+          <a href="news.html" class="nav-link active">News</a>
+          <a href="events.html" class="nav-link">Events</a>
+          <a href="gallery.html" class="nav-link">Gallery</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="admissions.html" class="btn btn-primary btn-sm nav-cta">Apply Now</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span aria-current="page">News</span>
+        </nav>
+        <h1 class="page-hero-title">News & Highlights</h1>
+        <p class="page-hero-desc">Discover the vibrant stories, academic honors, and daily life at St. Augustine Academy.</p>
+      </div>
+    </section>
+
+    <section class="section section-white">
+      <div class="container">
+        <div class="info-box" style="margin-bottom: 2rem;">
+          <div class="info-box-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span>Dynamic Data Feed (Phase 3)</span>
+          </div>
+          <p style="margin-bottom: 0;">This news feed will connect directly to the Supabase <code>news</code> table in Phase 3 to show real-time published articles and slugs.</p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <img src="images/classroom-academics.jpg" alt="Students in science lab" class="card-img" loading="lazy">
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-gold">Academics</span>
+                <time datetime="2026-10-15">October 15, 2026</time>
+              </div>
+              <h3 class="card-title">St. Augustine Students Triumph at National STEM Olympiad</h3>
+              <p class="card-desc">Our Junior Secondary robotics team clinched first place with their solar-powered autonomous agriculture drone innovation.</p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="images/hero-campus.jpg" alt="School campus event" class="card-img" loading="lazy">
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-primary">Campus Life</span>
+                <time datetime="2026-10-08">October 8, 2026</time>
+              </div>
+              <h3 class="card-title">Annual Inter-House Sports Gala Announced</h3>
+              <p class="card-desc">Preparations are underway for the 2026 Athletics tournament featuring track, swimming, basketball, and artistic gymnastic displays.</p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="images/principal-portrait.jpg" alt="Principal Dr Adeleke" class="card-img" loading="lazy">
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="badge badge-gold">Admissions</span>
+                <time datetime="2026-09-28">September 28, 2026</time>
+              </div>
+              <h3 class="card-title">2026/2027 Admissions Open for Early Years & Secondary</h3>
+              <p class="card-desc">Applications are officially invited for prospective students into Nursery, Primary and Year 7 through 10 classes.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2026</span> St. Augustine International Academy. All rights reserved.</p>
+        <p><a href="index.html" style="color: var(--color-accent);">Return to Homepage</a></p>
+      </div>
+    </div>
+  </footer>
+  <script src="js/public.js"></script>
+</body>
+</html>
