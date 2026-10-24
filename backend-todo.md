@@ -3,34 +3,34 @@
 Read `backend-spec.md` first. Work top to bottom and stop at every **CHECKPOINT**.
 
 ## Phase 0: Project setup
-- [ ] Create a Supabase project (note region and DB password)
-- [ ] Copy Project URL and anon key (Project Settings > API)
-- [ ] Create `/supabase` folder in the repo for SQL files
-- [ ] **CHECKPOINT:** I can find my URL and anon key and explain which one is safe in the browser
+- [x] Create a Supabase project (note region and DB password)
+- [x] Copy Project URL and anon key (Project Settings > API)
+- [x] Create `/supabase` folder in the repo for SQL files
+- [x] **CHECKPOINT:** I can find my URL and anon key and explain which one is safe in the browser
 
 ## Phase 1: Tables
-- [ ] `01_tables.sql`: profiles, news, events, gallery_items, contact_messages, admission_applications
-- [ ] Add `handle_new_user` trigger and `is_admin()` function
-- [ ] Run in SQL Editor
-- [ ] Verify all tables in Table Editor
-- [ ] **CHECKPOINT:** I can explain what each table is for and what a trigger does
+- [x] `01_tables.sql`: profiles, news, events, gallery_items, contact_messages, admission_applications
+- [x] Add `handle_new_user` trigger and `is_admin()` function
+- [x] Run in SQL Editor
+- [x] Verify all tables in Table Editor
+- [x] **CHECKPOINT:** I can explain what each table is for and what a trigger does
 
 ## Phase 2: Row Level Security
-- [ ] Enable RLS on all tables (`02_rls.sql`)
-- [ ] Write policies per the table in spec section 6
-- [ ] Add sample rows (some published, some not) via `03_seed.sql`
-- [ ] Test in SQL Editor or from the browser as anon: only published rows appear
-- [ ] Test inserting a contact message as anon: works
-- [ ] Test reading contact messages as anon: returns nothing
-- [ ] **CHECKPOINT:** I can explain why anon is insert-only on forms
+- [x] Enable RLS on all tables (`02_rls.sql`)
+- [x] Write policies per the table in spec section 6
+- [x] Add sample rows (some published, some not) via `03_seed.sql`
+- [x] Test in SQL Editor or from the browser as anon: only published rows appear
+- [x] Test inserting a contact message as anon: works
+- [x] Test reading contact messages as anon: returns nothing
+- [x] **CHECKPOINT:** I can explain why anon is insert-only on forms
 
 ## Phase 3: Auth and admin
-- [ ] Enable email + password; turn off confirm-email while developing
-- [ ] Create my admin account (Authentication > Users > Add user)
-- [ ] Set my profile `role` to `admin` (Table Editor or SQL)
-- [ ] Test: `is_admin()` returns true for me, false for another test user
-- [ ] Test: a normal user cannot change their own role
-- [ ] **CHECKPOINT:** admin vs non-admin behaves differently on every table
+- [x] Enable email + password; turn off confirm-email while developing
+- [x] Create my admin account (Authentication > Users > Add user)
+- [x] Set my profile `role` to `admin` (Table Editor or SQL)
+- [x] Test: `is_admin()` returns true for me, false for another test user
+- [x] Test: a normal user cannot change their own role
+- [x] **CHECKPOINT:** admin vs non-admin behaves differently on every table
 
 ## Phase 4: Storage
 - [ ] Create public bucket `school-media`
@@ -63,10 +63,6 @@ Read `backend-spec.md` first. Work top to bottom and stop at every **CHECKPOINT*
 - [ ] Database backups plan
 
 ## Learning log
-- RLS in my own words:
-- Why insert-only for anon:
-- Something that broke and how I fixed it:
-
-
-
-
+- RLS in my own words: Row Level Security is like having a digital bouncer on every table drawer who checks who is asking before giving back any rows. Anonymous visitors only get to see rows marked is_published = true, while administrators with the is_admin() golden badge can read, edit, and manage everything.
+- Why insert-only for anon: Forms like contact messages and student applications collect private personal data (parent emails, phone numbers, children's birthdates). By making anon insert-only with no SELECT permissions, parents can drop submissions into the school mailbox, but malicious visitors can never read or snoop on anyone else's private submissions.
+- Something that broke and how I fixed it: When testing anonymously inserted records, attempting to request return=representation failed because anon users do not have read permissions. Switching to standard minimal return confirms 201 Created while preserving absolute zero-read privacy.
