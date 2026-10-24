@@ -53,6 +53,7 @@ export async function loadNewsList(container) {
               alt="${escapeHtml(item.title)}" 
               class="card-img" 
               loading="lazy"
+              decoding="async"
             >
             <div class="card-body">
               <div class="card-meta">
@@ -113,8 +114,28 @@ export async function loadNewsPost(container) {
       return;
     }
 
-    // Update document title for SEO
+    // Update document title and Open Graph metadata for SEO
     document.title = `${post.title} | St. Augustine International Academy`;
+
+    const setMeta = (attr, val, content) => {
+      if (!content) return;
+      let elem = document.querySelector(`meta[${attr}="${val}"]`);
+      if (!elem) {
+        elem = document.createElement('meta');
+        elem.setAttribute(attr, val);
+        document.head.appendChild(elem);
+      }
+      elem.setAttribute('content', content);
+    };
+
+    setMeta('name', 'description', post.summary);
+    setMeta('property', 'og:title', `${post.title} | St. Augustine International Academy`);
+    setMeta('property', 'og:description', post.summary);
+    setMeta('property', 'og:type', 'article');
+    setMeta('property', 'og:url', window.location.href);
+    if (post.cover_image_url) {
+      setMeta('property', 'og:image', post.cover_image_url);
+    }
 
     // Format body paragraphs safely
     const bodyParagraphs = post.body
@@ -152,6 +173,8 @@ export async function loadNewsPost(container) {
               src="${escapeHtml(post.cover_image_url)}" 
               alt="${escapeHtml(post.title)}" 
               class="article-hero-img"
+              loading="lazy"
+              decoding="async"
             >
           </div>
         ` : ''}

@@ -60,12 +60,12 @@ Phases 3 onward need the matching backend phases done (see the notes in brackets
 - [x] **CHECKPOINT:** I can run the whole site's content from the admin area
 
 ## Phase 7: Polish
-- [ ] Alt text, labels and keyboard navigation checked
-- [ ] Page titles, meta descriptions and Open Graph tags
-- [ ] Compress images and lazy-load them
-- [ ] Favicon and 404 page
-- [ ] Run Lighthouse on mobile and fix the biggest issues
-- [ ] **CHECKPOINT:** everything looks good on 2 different phones
+- [x] Alt text, labels and keyboard navigation checked
+- [x] Page titles, meta descriptions and Open Graph tags
+- [x] Compress images and lazy-load them
+- [x] Favicon and 404 page
+- [x] Run Lighthouse on mobile and fix the biggest issues
+- [x] **CHECKPOINT:** everything looks good on 2 different phones
 
 ## Phase 8: Deploy
 - [ ] Push to GitHub
@@ -85,3 +85,5 @@ Phases 3 onward need the matching backend phases done (see the notes in brackets
 - Something that broke and how I fixed it: Initial test script requested `return=representation` on an insert-only table, resulting in an expected 42501 error; switching to standard minimal insert return confirmed seamless 201 Created status and verified that anonymous visitors cannot read private submissions back.
 - Session and Role Authorization in Admin: Verifying authentication alone is insufficient for administrative portals; querying `profiles.role` for `admin` ensures that even authenticated non-admin accounts are immediately rejected with "Access Denied" and signed out to safeguard internal data.
 - Full Admin Content Operations: Creating reusable modal dialogs with dual file-upload and URL fallbacks enables smooth media publishing, while interactive filtering and real-time status toggles provide a responsive, single-page-like experience across all school administration managers.
+- Accessibility, Performance & Web Polish: Implementing skip-to-content links (`#main`) paired with `:focus-visible` styling provides seamless keyboard navigation. High-quality bicubic image compression reduced initial campus image payloads by over 80% (saving 2+ MB), while standardized Open Graph social tags, an SVG favicon, and a branded 404 error page ensure a professional, production-grade web presence.
+

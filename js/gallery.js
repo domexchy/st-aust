@@ -116,6 +116,7 @@ function renderFilteredGrid(container) {
             alt="${escapeHtml(item.caption || 'School campus gallery photo')}" 
             class="gallery-thumb" 
             loading="lazy"
+            decoding="async"
           >
           <div class="gallery-overlay">
             <span class="gallery-album-tag">${escapeHtml(item.album || 'Campus Life')}</span>

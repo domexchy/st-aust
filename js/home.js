@@ -53,6 +53,7 @@ export async function loadHomeNews(container) {
               alt="${escapeHtml(item.title)}" 
               class="card-img" 
               loading="lazy"
+              decoding="async"
             >
             <div class="card-body">
               <div class="card-meta">
