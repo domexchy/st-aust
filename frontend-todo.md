@@ -68,7 +68,7 @@ Phases 3 onward need the matching backend phases done (see the notes in brackets
 - [x] **CHECKPOINT:** everything looks good on 2 different phones
 
 ## Phase 8: Deploy
-- [ ] Push to GitHub
+- [x] Push to GitHub
 - [ ] Deploy to Netlify, Vercel or GitHub Pages
 - [ ] Update Supabase Site URL and Redirect URLs with the live domain
 - [ ] Re-test public pages, forms and admin on the live site
