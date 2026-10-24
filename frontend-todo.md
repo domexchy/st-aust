@@ -52,12 +52,12 @@ Phases 3 onward need the matching backend phases done (see the notes in brackets
 
 ## Phase 6: Admin content management
       *(needs backend Phase 2 and 4)*
-- [ ] News manager (add, edit, delete, publish toggle, cover image upload)
-- [ ] Events manager
-- [ ] Gallery manager (multi-upload, caption, delete)
-- [ ] Messages page (view, mark read, delete)
-- [ ] Applications page (view, filter, change status, delete)
-- [ ] **CHECKPOINT:** I can run the whole site's content from the admin area
+- [x] News manager (add, edit, delete, publish toggle, cover image upload)
+- [x] Events manager
+- [x] Gallery manager (multi-upload, caption, delete)
+- [x] Messages page (view, mark read, delete)
+- [x] Applications page (view, filter, change status, delete)
+- [x] **CHECKPOINT:** I can run the whole site's content from the admin area
 
 ## Phase 7: Polish
 - [ ] Alt text, labels and keyboard navigation checked
@@ -84,3 +84,4 @@ Phases 3 onward need the matching backend phases done (see the notes in brackets
 - Something I learned about calling Supabase from the browser: When inserting records into tables with insert-only RLS policies (like contact messages and admissions), anonymous users do not have SELECT permission. If code attempts `.select()` after `.insert()` (or sends `Prefer: return=representation`), PostgREST throws a 42501 RLS policy violation. Leaving out `.select()` sends `Prefer: return=minimal` which cleanly succeeds with 201 Created and enforces zero-read security.
 - Something that broke and how I fixed it: Initial test script requested `return=representation` on an insert-only table, resulting in an expected 42501 error; switching to standard minimal insert return confirmed seamless 201 Created status and verified that anonymous visitors cannot read private submissions back.
 - Session and Role Authorization in Admin: Verifying authentication alone is insufficient for administrative portals; querying `profiles.role` for `admin` ensures that even authenticated non-admin accounts are immediately rejected with "Access Denied" and signed out to safeguard internal data.
+- Full Admin Content Operations: Creating reusable modal dialogs with dual file-upload and URL fallbacks enables smooth media publishing, while interactive filtering and real-time status toggles provide a responsive, single-page-like experience across all school administration managers.

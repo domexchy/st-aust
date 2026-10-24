@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inquiry Messages | St. Augustine Academy Admin</title>
+  <meta name="description" content="View and manage messages sent through the public contact form.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="admin-body">
+
+  <!-- Authentication Loading Overlay -->
+  <div id="admin-auth-loading" style="position: fixed; inset: 0; background: #0f172a; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff;">
+    <div class="btn-spinner" style="width: 36px; height: 36px; border-width: 3px; border-color: var(--color-accent); border-right-color: transparent; margin-bottom: 1rem;"></div>
+    <p style="font-size: 0.95rem; color: #cbd5e1;">Verifying administrator credentials...</p>
+  </div>
+
+  <!-- Shared Admin Header -->
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="dashboard.html" class="admin-brand">
+          <div class="brand-crest" style="width: 32px; height: 32px; font-size: 0.85rem;" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <span>St. Augustine</span>
+          <span class="admin-badge">Admin</span>
+        </a>
+
+        <nav class="admin-nav" aria-label="Admin Navigation">
+          <a href="dashboard.html" class="admin-nav-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="news.html" class="admin-nav-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 13a2 2 0 0 1-2-2V7m2 13a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+            <span>News</span>
+          </a>
+          <a href="events.html" class="admin-nav-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Events</span>
+          </a>
+          <a href="gallery.html" class="admin-nav-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Gallery</span>
+          </a>
+          <a href="messages.html" class="admin-nav-link active">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Messages</span>
+          </a>
+          <a href="applications.html" class="admin-nav-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span>Applications</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="admin-user-bar">
+        <div class="admin-user-info">
+          <span id="admin-user-name" class="admin-user-name">Administrator</span>
+          <span id="admin-user-role" class="admin-user-role">admin</span>
+        </div>
+        <button type="button" id="logout-btn" class="btn btn-outline btn-sm admin-logout-btn" style="border-color: #334155; color: #f8fafc; font-size: 0.8rem; padding: 6px 12px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <span>Log Out</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <div class="admin-page-header">
+      <div>
+        <h1 class="admin-title">Inquiries & Contact Inbox</h1>
+        <p class="admin-subtitle">Read parent inquiries, schedule campus visits, and follow up directly.</p>
+      </div>
+    </div>
+
+    <!-- Toolbar Filters -->
+    <div class="admin-toolbar">
+      <div class="admin-filter-group">
+        <button type="button" class="admin-filter-btn filter-messages-btn active" data-filter="all">All Inquiries</button>
+        <button type="button" class="admin-filter-btn filter-messages-btn" data-filter="unread">Unread Only</button>
+        <button type="button" class="admin-filter-btn filter-messages-btn" data-filter="read">Read</button>
+      </div>
+      <div>
+        <input type="search" id="messages-search" class="admin-search-input" placeholder="Search by name, email...">
+      </div>
+    </div>
+
+    <!-- Messages Table -->
+    <div class="admin-table-wrapper">
+      <table class="admin-table" aria-label="Messages Inbox Table">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Sender Name & Email</th>
+            <th>Phone</th>
+            <th>Message Excerpt</th>
+            <th>Received</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="messages-table-body">
+          <tr>
+            <td colspan="6" style="text-align: center; padding: 2rem;">Loading messages...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Message Detail Modal -->
+  <div id="message-modal" class="admin-modal-backdrop" hidden>
+    <div class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="msg-modal-title">
+      <div class="admin-modal-header">
+        <h2 id="msg-modal-title" class="admin-modal-title">Inquiry Details</h2>
+        <button type="button" id="btn-close-message-modal" class="btn-close-modal" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="admin-modal-body">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+          <span id="msg-detail-badge" class="status-badge unread">Unread</span>
+          <span id="msg-detail-date" style="font-size: 0.85rem; color: #64748b;">Oct 24, 2026</span>
+        </div>
+
+        <div class="detail-grid">
+          <div class="detail-item">
+            <span class="detail-label">Sender Name</span>
+            <strong id="msg-detail-name" class="detail-val">...</strong>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Email Address</span>
+            <a id="msg-detail-email" href="#" class="detail-val" style="color: var(--color-primary); font-weight: 600;">...</a>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Telephone Number</span>
+            <a id="msg-detail-phone" href="#" class="detail-val" style="color: var(--color-primary); font-weight: 600;">...</a>
+          </div>
+        </div>
+
+        <div style="border-top: 1px solid var(--color-border); padding-top: 1.25rem;">
+          <span class="detail-label" style="display: block; margin-bottom: 0.5rem;">Message Content</span>
+          <div id="msg-detail-body" style="background: #f8fafc; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.25rem; font-size: 0.95rem; line-height: 1.6; color: #1e293b; white-space: pre-wrap;">
+            ...
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-modal-footer">
+        <button type="button" id="btn-delete-active-message" class="btn btn-outline" style="color: #dc2626; border-color: #fca5a5; margin-right: auto;">
+          Delete Message
+        </button>
+        <button type="button" id="btn-done-message-modal" class="btn btn-primary">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { checkAdminAuth, initMessagesManager } from '../js/admin.js';
+    const auth = await checkAdminAuth();
+    if (auth) {
+      initMessagesManager();
+    }
+  </script>
+</body>
+</html>
