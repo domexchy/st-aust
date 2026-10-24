@@ -69,9 +69,9 @@ Phases 3 onward need the matching backend phases done (see the notes in brackets
 
 ## Phase 8: Deploy
 - [x] Push to GitHub
-- [ ] Deploy to Netlify, Vercel or GitHub Pages
-- [ ] Update Supabase Site URL and Redirect URLs with the live domain
-- [ ] Re-test public pages, forms and admin on the live site
+- [x] Deploy to Netlify, Vercel or GitHub Pages (Live at https://st-aust.vercel.app/)
+- [x] Update Supabase Site URL and Redirect URLs with the live domain
+- [x] Re-test public pages, forms and admin on the live site
 - [ ] Share the link with the school for feedback
 
 ## Stretch
@@ -86,4 +86,6 @@ Phases 3 onward need the matching backend phases done (see the notes in brackets
 - Session and Role Authorization in Admin: Verifying authentication alone is insufficient for administrative portals; querying `profiles.role` for `admin` ensures that even authenticated non-admin accounts are immediately rejected with "Access Denied" and signed out to safeguard internal data.
 - Full Admin Content Operations: Creating reusable modal dialogs with dual file-upload and URL fallbacks enables smooth media publishing, while interactive filtering and real-time status toggles provide a responsive, single-page-like experience across all school administration managers.
 - Accessibility, Performance & Web Polish: Implementing skip-to-content links (`#main`) paired with `:focus-visible` styling provides seamless keyboard navigation. High-quality bicubic image compression reduced initial campus image payloads by over 80% (saving 2+ MB), while standardized Open Graph social tags, an SVG favicon, and a branded 404 error page ensure a professional, production-grade web presence.
+- Production Vercel Deployment & URL Routing: Static hostings default to strict path matching, which results in 404s when users navigate to clean URLs (like `/about` or `/contact`) or `/admin/`. Adding `vercel.json` with `cleanUrls: true` and an `admin/index.html` fallback redirect ensures smooth navigation for all staff and public visitors, while maintaining optimal security headers.
+
 
