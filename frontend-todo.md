@@ -35,11 +35,11 @@ Phases 3 onward need the matching backend phases done (see the notes in brackets
 - [x] **CHECKPOINT:** unpublished items never show up
 
 ## Phase 4: Forms
-- [ ] Contact form with validation and success/error messages
-- [ ] Admission application form with validation
-- [ ] Disable button while sending, reset after success
-- [ ] Confirm in the Supabase dashboard that submissions arrive
-- [ ] **CHECKPOINT:** both forms work and I cannot read submissions from the public site
+- [x] Contact form with validation and success/error messages
+- [x] Admission application form with validation
+- [x] Disable button while sending, reset after success
+- [x] Confirm in the Supabase dashboard that submissions arrive
+- [x] **CHECKPOINT:** both forms work and I cannot read submissions from the public site
 
 ## Phase 5: Admin login and protection
       *(needs backend Phase 3)*
@@ -81,5 +81,5 @@ Phases 3 onward need the matching backend phases done (see the notes in brackets
 - [ ] Online fee payment
 
 ## Learning log
-- Something I learned about calling Supabase from the browser: Vanilla browser setups require the public anon key and CDN imports, and static pages must remain lightweight with mobile-first CSS and semantic HTML.
-- Something that broke and how I fixed it: Git initially required user identity in this new workspace; configured repository-level git user.name and user.email to ensure clean commits.
+- Something I learned about calling Supabase from the browser: When inserting records into tables with insert-only RLS policies (like contact messages and admissions), anonymous users do not have SELECT permission. If code attempts `.select()` after `.insert()` (or sends `Prefer: return=representation`), PostgREST throws a 42501 RLS policy violation. Leaving out `.select()` sends `Prefer: return=minimal` which cleanly succeeds with 201 Created and enforces zero-read security.
+- Something that broke and how I fixed it: Initial test script requested `return=representation` on an insert-only table, resulting in an expected 42501 error; switching to standard minimal insert return confirmed seamless 201 Created status and verified that anonymous visitors cannot read private submissions back.

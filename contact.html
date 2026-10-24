@@ -177,54 +177,102 @@
       </div>
     </section>
 
-    <!-- 2. Contact Form Placeholder Section (details & map only in Phase 1, form arrives in Phase 4) -->
+    <!-- 2. Contact Form Section (Phase 4 Live Supabase Integration) -->
     <section class="section section-alt" id="message-form" aria-labelledby="form-heading">
       <div class="container">
         <div class="section-header">
-          <span class="eyebrow">Direct Messaging</span>
+          <span class="eyebrow">Direct Inquiries</span>
           <h2 id="form-heading" class="section-title">Send a Direct Message</h2>
-          <p class="section-desc">According to the project plan, live database message sending with validation will be activated in Phase 4. Here is the form structure and contact protocol:</p>
+          <p class="section-desc">Have questions or want to speak with our admissions or administrative team? Fill out the form below and we will get back to you promptly.</p>
         </div>
 
-        <div class="card" style="max-width: 760px; margin: 0 auto; padding: 2.5rem; border: 2px dashed #94a3b8; background-color: var(--color-surface);">
-          <div style="text-align: center; margin-bottom: 2rem;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background-color: var(--color-primary-subtle); color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem auto;">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        <form id="contact-form" class="form-card" novalidate aria-label="Contact and Inquiry Form">
+          <!-- Live Status Banner (Success / Error) -->
+          <div id="contact-status-msg" class="form-status-msg" role="status" aria-live="polite"></div>
+
+          <div class="form-row">
+            <!-- Full Name Field -->
+            <div class="form-group">
+              <label for="contact-name" class="form-label">
+                <span>Full Name</span>
+                <span class="required-star" aria-hidden="true">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="contact-name" 
+                name="name" 
+                class="form-control" 
+                placeholder="e.g. Dr. Ngozi Adeleke" 
+                required 
+                autocomplete="name"
+                aria-describedby="contact-name-error">
+              <span id="contact-name-error" class="form-error" role="alert"></span>
+            </div>
+
+            <!-- Email Address Field -->
+            <div class="form-group">
+              <label for="contact-email" class="form-label">
+                <span>Email Address</span>
+                <span class="required-star" aria-hidden="true">*</span>
+              </label>
+              <input 
+                type="email" 
+                id="contact-email" 
+                name="email" 
+                class="form-control" 
+                placeholder="e.g. ngozi.adeleke@example.com" 
+                required 
+                autocomplete="email"
+                aria-describedby="contact-email-error">
+              <span id="contact-email-error" class="form-error" role="alert"></span>
+            </div>
+          </div>
+
+          <!-- Phone Number Field (Optional) -->
+          <div class="form-group">
+            <label for="contact-phone" class="form-label">
+              <span>Phone Number</span>
+              <span style="font-weight: 400; font-size: 0.8rem; color: var(--color-text-muted);">(Optional)</span>
+            </label>
+            <input 
+              type="tel" 
+              id="contact-phone" 
+              name="phone" 
+              class="form-control" 
+              placeholder="e.g. +234 801 234 5678" 
+              autocomplete="tel"
+              aria-describedby="contact-phone-error">
+            <span id="contact-phone-error" class="form-error" role="alert"></span>
+          </div>
+
+          <!-- Message Body Field -->
+          <div class="form-group">
+            <label for="contact-message" class="form-label">
+              <span>Message</span>
+              <span class="required-star" aria-hidden="true">*</span>
+            </label>
+            <textarea 
+              id="contact-message" 
+              name="message" 
+              class="form-control" 
+              rows="5" 
+              placeholder="Tell us about your inquiry, schedule a tour, or ask about curriculum requirements..." 
+              required
+              aria-describedby="contact-message-error"></textarea>
+            <span id="contact-message-error" class="form-error" role="alert"></span>
+          </div>
+
+          <!-- Form Submit Button -->
+          <div style="margin-top: var(--space-md); text-align: right;">
+            <button type="submit" id="contact-submit-btn" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center;">
+              <span>Send Message</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
               </svg>
-            </div>
-            <h3 style="font-size: 1.35rem; margin-bottom: 0.5rem;">Contact Form Ready for Phase 4</h3>
-            <p style="color: var(--color-text-muted); font-size: 0.95rem;">
-              When backend Phase 0-2 and frontend Phase 4 are completed, this section will allow parents to submit validated inquiries straight into the school's admin dashboard inbox.
-            </p>
+            </button>
           </div>
-
-          <!-- Preview of form fields according to frontend-spec.md Section 6 -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; font-size: 0.9rem;">
-            <div style="background-color: var(--color-surface-alt); padding: 0.75rem 1rem; border-radius: 6px; border: 1px solid var(--color-border);">
-              <strong>Full Name</strong> (Required)
-            </div>
-            <div style="background-color: var(--color-surface-alt); padding: 0.75rem 1rem; border-radius: 6px; border: 1px solid var(--color-border);">
-              <strong>Email Address</strong> (Required)
-            </div>
-            <div style="background-color: var(--color-surface-alt); padding: 0.75rem 1rem; border-radius: 6px; border: 1px solid var(--color-border);">
-              <strong>Phone Number</strong> (Optional)
-            </div>
-            <div style="background-color: var(--color-surface-alt); padding: 0.75rem 1rem; border-radius: 6px; border: 1px solid var(--color-border);">
-              <strong>Message Body</strong> (Required)
-            </div>
-          </div>
-
-          <div style="text-align: center;">
-            <p style="font-size: 0.9rem; margin-bottom: 1.25rem; color: var(--color-text-muted);">
-              Need immediate assistance today? Please call our admissions desk or send an email:
-            </p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-              <a href="tel:+2348012345678" class="btn btn-primary">Call +234 801 234 5678</a>
-              <a href="mailto:info@staugustine.edu" class="btn btn-secondary">Email info@staugustine.edu</a>
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
     </section>
   </main>
@@ -311,5 +359,6 @@
   </footer>
 
   <script src="js/public.js"></script>
+  <script type="module" src="js/forms.js"></script>
 </body>
 </html>
