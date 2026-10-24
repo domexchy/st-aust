@@ -20,7 +20,7 @@ Phases 3 onward need the matching backend phases done (see the notes in brackets
 - [x] **CHECKPOINT:** all static pages look good on a real phone
 
 ## Phase 2: Connect to Supabase
-- [ ] Add supabase-js CDN, `config.js` and `supabaseClient.js`
+- [x] Add supabase-js CDN, `config.js` and `supabaseClient.js`
 - [ ] Log a simple test query to confirm the connection
       *(needs backend Phase 0 to 2)*
 - [ ] **CHECKPOINT:** published sample rows appear in the console
