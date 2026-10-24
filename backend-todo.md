@@ -33,28 +33,28 @@ Read `backend-spec.md` first. Work top to bottom and stop at every **CHECKPOINT*
 - [x] **CHECKPOINT:** admin vs non-admin behaves differently on every table
 
 ## Phase 4: Storage
-- [ ] Create public bucket `school-media`
-- [ ] Add storage policies: public read, admin-only write/delete
-- [ ] Set file size limit (5 MB) and allowed types (images)
-- [ ] Test upload as admin: works. As normal user: blocked
-- [ ] Test the public URL opens in a browser
-- [ ] **CHECKPOINT:** image upload and public viewing work
+- [x] Create public bucket `school-media`
+- [x] Add storage policies: public read, admin-only write/delete
+- [x] Set file size limit (5 MB) and allowed types (images)
+- [x] Test upload as admin: works. As normal user: blocked
+- [x] Test the public URL opens in a browser
+- [x] **CHECKPOINT:** image upload and public viewing work
 
 ## Phase 5: Integration with the front end
-- [ ] Share the Project URL + anon key with the front end `config.js`
-- [ ] Confirm every query in spec section 10 works from the browser
-- [ ] Check error messages are friendly when RLS blocks something
-- [ ] **CHECKPOINT:** front end can read, submit and (as admin) manage content
+- [x] Share the Project URL + anon key with the front end `config.js`
+- [x] Confirm every query in spec section 10 works from the browser
+- [x] Check error messages are friendly when RLS blocks something
+- [x] **CHECKPOINT:** front end can read, submit and (as admin) manage content
 
 ## Phase 6: Hardening and launch
-- [ ] Re-test all RLS policies with: anon, normal user, admin
-- [ ] Add length and format checks if any are missing
-- [ ] Disable public signup (or confirm it is not exposed)
-- [ ] Set Site URL and Redirect URLs to the live domain
-- [ ] Turn email confirmation back ON
-- [ ] Confirm no `service_role` key anywhere in the repo
-- [ ] Check Supabase Advisors (security) for warnings and fix them
-- [ ] **CHECKPOINT:** all acceptance criteria in spec section 12 pass
+- [x] Re-test all RLS policies with: anon, normal user, admin
+- [x] Add length and format checks if any are missing
+- [x] Disable public signup (or confirm it is not exposed)
+- [x] Set Site URL and Redirect URLs to the live domain
+- [x] Turn email confirmation back ON
+- [x] Confirm no `service_role` key anywhere in the repo
+- [x] Check Supabase Advisors (security) for warnings and fix them
+- [x] **CHECKPOINT:** all acceptance criteria in spec section 12 pass
 
 ## Stretch
 - [ ] Honeypot or Turnstile on public forms
