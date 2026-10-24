@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News Article | St. Augustine International Academy</title>
+  <meta name="description" content="Read full news and announcements from St. Augustine International Academy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Shared Site Header -->
+  <header class="site-header">
+    <div class="header-topbar">
+      <div class="container">
+        <div class="topbar-info">
+          <span>📍 14 Heritage Way, Victoria Island, Lagos</span>
+          <a href="tel:+2348012345678">📞 +234 801 234 5678</a>
+          <a href="mailto:admissions@staugustine.edu">✉️ admissions@staugustine.edu</a>
+        </div>
+        <div class="topbar-links">
+          <span>🕒 Mon - Fri: 7:30 AM - 4:30 PM</span>
+          <a href="admin/login.html">🔒 Staff Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="header-main">
+        <a href="index.html" class="brand" aria-label="St. Augustine International Academy Home">
+          <div class="brand-crest" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">St. Augustine</span>
+            <span class="brand-motto">International Academy</span>
+          </div>
+        </a>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <nav id="primary-navigation" class="nav-menu" aria-label="Main Navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="academics.html" class="nav-link">Academics</a>
+          <a href="admissions.html" class="nav-link">Admissions</a>
+          <a href="news.html" class="nav-link active">News</a>
+          <a href="events.html" class="nav-link">Events</a>
+          <a href="gallery.html" class="nav-link">Gallery</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="admissions.html" class="btn btn-primary btn-sm nav-cta">Apply Now</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section section-white">
+      <div class="container">
+        <!-- Dynamic News Post Container loaded by slug -->
+        <div id="news-post-container">
+          <!-- Content rendered by js/news.js -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2026</span> St. Augustine International Academy. All rights reserved.</p>
+        <p><a href="news.html" style="color: var(--color-accent);">&larr; Return to News Catalog</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/public.js"></script>
+  <script type="module" src="js/news.js"></script>
+</body>
+</html>

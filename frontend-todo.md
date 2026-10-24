@@ -26,13 +26,13 @@ Phases 3 onward need the matching backend phases done (see the notes in brackets
 - [x] **CHECKPOINT:** published sample rows appear in the console
 
 ## Phase 3: Dynamic public pages
-- [ ] News list page from `news` table
-- [ ] Single news post page using `?slug=`
-- [ ] Events page (upcoming only)
-- [ ] Gallery grid with lightbox
-- [ ] Home page: latest 3 news and next 3 events
-- [ ] Loading, empty and error states on all of them
-- [ ] **CHECKPOINT:** unpublished items never show up
+- [x] News list page from `news` table
+- [x] Single news post page using `?slug=`
+- [x] Events page (upcoming only)
+- [x] Gallery grid with lightbox
+- [x] Home page: latest 3 news and next 3 events
+- [x] Loading, empty and error states on all of them
+- [x] **CHECKPOINT:** unpublished items never show up
 
 ## Phase 4: Forms
 - [ ] Contact form with validation and success/error messages

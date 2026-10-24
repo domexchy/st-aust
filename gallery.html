@@ -72,40 +72,27 @@
 
     <section class="section section-white">
       <div class="container">
-        <div class="info-box" style="margin-bottom: 2rem;">
-          <div class="info-box-title">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            <span>Supabase Gallery & Lightbox Coming in Phase 3</span>
-          </div>
-          <p style="margin-bottom: 0;">In Phase 3, this gallery will feature high-resolution albums stored in Supabase Storage with an interactive lightbox modal.</p>
+        <!-- Dynamic Album Filter Buttons -->
+        <div id="gallery-filters-container" class="gallery-filters" role="group" aria-label="Filter gallery by album">
+          <!-- Album filter buttons injected by js/gallery.js -->
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-          <div class="card" style="overflow: hidden;">
-            <img src="images/hero-campus.jpg" alt="Students walking on campus lawn" style="width: 100%; aspect-ratio: 4/3; object-fit: cover;">
-            <div style="padding: 1rem;">
-              <strong>Main Academic Quadrangle</strong>
-              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0;">Students between lecture sessions on our landscaped central quad.</p>
-            </div>
-          </div>
-          <div class="card" style="overflow: hidden;">
-            <img src="images/classroom-academics.jpg" alt="Collaborative learning in STEM lab" style="width: 100%; aspect-ratio: 4/3; object-fit: cover;">
-            <div style="padding: 1rem;">
-              <strong>STEM & Innovation Lab</strong>
-              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0;">Hands-on coding and robotics project experiments.</p>
-            </div>
-          </div>
-          <div class="card" style="overflow: hidden;">
-            <img src="images/principal-portrait.jpg" alt="School library research center" style="width: 100%; aspect-ratio: 4/3; object-fit: cover;">
-            <div style="padding: 1rem;">
-              <strong>Library & Resource Hub</strong>
-              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0;">Over 15,000 print volumes and digital global research databases.</p>
-            </div>
-          </div>
+        <!-- Dynamic Gallery Grid Container -->
+        <div id="gallery-items-container">
+          <!-- Gallery photos injected by js/gallery.js -->
         </div>
       </div>
     </section>
   </main>
+
+  <!-- Accessible Lightbox Modal -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Image preview">
+    <div class="lightbox-content">
+      <button class="lightbox-close" type="button" aria-label="Close image preview">&times;</button>
+      <img src="" alt="" class="lightbox-img">
+      <div class="lightbox-caption-bar"></div>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <div class="container">
@@ -116,5 +103,6 @@
     </div>
   </footer>
   <script src="js/public.js"></script>
+  <script type="module" src="js/gallery.js"></script>
 </body>
 </html>

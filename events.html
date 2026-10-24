@@ -72,54 +72,9 @@
 
     <section class="section section-white">
       <div class="container">
-        <div class="info-box" style="margin-bottom: 2rem;">
-          <div class="info-box-title">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            <span>Live Events Feed Coming in Phase 3</span>
-          </div>
-          <p style="margin-bottom: 0;">This section will dynamically load upcoming events from the Supabase <code>events</code> table sorted chronologically.</p>
-        </div>
-
-        <div class="card-grid">
-          <article class="card">
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="badge badge-gold">🗓️ Sat, Nov 14, 2026</span>
-                <span>9:00 AM - 1:00 PM</span>
-              </div>
-              <h3 class="card-title">Annual Open House & Campus Discovery Tour</h3>
-              <p class="card-desc">Prospective parents and children are invited to tour science labs, art studios, meet teachers, and experience classroom demos.</p>
-              <div class="card-footer">
-                <span style="font-size: 0.85rem; color: var(--color-text-muted);">📍 Main Auditorium</span>
-              </div>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="badge badge-gold">🗓️ Thu, Nov 26, 2026</span>
-                <span>2:00 PM - 5:00 PM</span>
-              </div>
-              <h3 class="card-title">First Term Parent-Teacher Academic Conference</h3>
-              <p class="card-desc">An interactive session for parents and subject tutors to review mid-term academic progress and personalized learning goals.</p>
-              <div class="card-footer">
-                <span style="font-size: 0.85rem; color: var(--color-text-muted);">📍 Classrooms & Hall</span>
-              </div>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="badge badge-gold">🗓️ Fri, Dec 11, 2026</span>
-                <span>5:30 PM - 8:00 PM</span>
-              </div>
-              <h3 class="card-title">Christmas Carol & Orchestral Concert</h3>
-              <p class="card-desc">Celebrate the festive season with musical renditions, choral harmonies, and theatrical performances by our academy students.</p>
-              <div class="card-footer">
-                <span style="font-size: 0.85rem; color: var(--color-text-muted);">📍 College Chapel</span>
-              </div>
-            </div>
-          </article>
+        <!-- Dynamic Events Container -->
+        <div id="events-list-container">
+          <!-- Rendered by js/events.js -->
         </div>
       </div>
     </section>
@@ -134,5 +89,6 @@
     </div>
   </footer>
   <script src="js/public.js"></script>
+  <script type="module" src="js/events.js"></script>
 </body>
 </html>

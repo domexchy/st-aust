@@ -202,7 +202,7 @@
       </div>
     </section>
 
-    <!-- 5. Latest News (Placeholder cards as required in Phase 1) -->
+    <!-- 5. Latest News (Dynamically fetched from Supabase) -->
     <section class="section section-white" aria-labelledby="news-heading">
       <div class="container">
         <div class="section-header">
@@ -211,54 +211,9 @@
           <p class="section-desc">Stay informed with recent achievements, academic announcements, and student triumphs.</p>
         </div>
 
-        <div class="card-grid">
-          <!-- News Card 1 -->
-          <article class="card">
-            <img src="images/classroom-academics.jpg" alt="Students showcasing science project" class="card-img" loading="lazy">
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="badge badge-gold">Academics</span>
-                <time datetime="2026-10-15">October 15, 2026</time>
-              </div>
-              <h3 class="card-title"><a href="news.html">St. Augustine Students Triumph at National STEM Olympiad</a></h3>
-              <p class="card-desc">Our Junior Secondary robotics team secured first place with their solar-powered autonomous agriculture drone innovation.</p>
-              <div class="card-footer">
-                <a href="news.html" class="btn btn-outline btn-sm">Read Story →</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 2 -->
-          <article class="card">
-            <img src="images/hero-campus.jpg" alt="Academy campus sports day" class="card-img" loading="lazy">
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="badge badge-primary">Campus Life</span>
-                <time datetime="2026-10-08">October 8, 2026</time>
-              </div>
-              <h3 class="card-title"><a href="news.html">Annual Inter-House Sports Gala Announced</a></h3>
-              <p class="card-desc">Preparations are underway for the 2026 Athletics tournament featuring track, swimming, basketball, and artistic gymnastic displays.</p>
-              <div class="card-footer">
-                <a href="news.html" class="btn btn-outline btn-sm">Read Story →</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 3 -->
-          <article class="card">
-            <img src="images/principal-portrait.jpg" alt="Academy library innovation" class="card-img" loading="lazy">
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="badge badge-gold">Admissions</span>
-                <time datetime="2026-09-28">September 28, 2026</time>
-              </div>
-              <h3 class="card-title"><a href="news.html">2026/2027 Admissions Open for Early Years & Secondary</a></h3>
-              <p class="card-desc">Applications are officially invited for prospective students into Nursery, Primary and Year 7 through 10 classes.</p>
-              <div class="card-footer">
-                <a href="news.html" class="btn btn-outline btn-sm">Read Story →</a>
-              </div>
-            </div>
-          </article>
+        <!-- Dynamic Home News Container -->
+        <div id="home-news-container">
+          <!-- Rendered by js/home.js -->
         </div>
 
         <div style="text-align: center; margin-top: 2rem;">
@@ -267,7 +222,7 @@
       </div>
     </section>
 
-    <!-- 6. Upcoming Events (Placeholder section as required in Phase 1) -->
+    <!-- 6. Upcoming Events (Dynamically fetched from Supabase) -->
     <section class="section section-alt" aria-labelledby="events-heading">
       <div class="container">
         <div class="section-header">
@@ -276,54 +231,9 @@
           <p class="section-desc">Join us for parent-teacher conferences, open house days, and cultural celebrations.</p>
         </div>
 
-        <div class="card-grid">
-          <!-- Event 1 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="badge badge-gold">🗓️ Sat, Nov 14, 2026</span>
-                <span>9:00 AM - 1:00 PM</span>
-              </div>
-              <h3 class="card-title"><a href="events.html">Annual Open House & Campus Discovery Tour</a></h3>
-              <p class="card-desc">Prospective parents and children are invited to tour science labs, art studios, meet teachers, and experience classroom demos.</p>
-              <div class="card-footer">
-                <span style="font-size: 0.85rem; color: var(--color-text-muted);">📍 Main Auditorium</span>
-                <a href="events.html" class="btn btn-outline btn-sm">Event Details</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Event 2 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="badge badge-gold">🗓️ Thu, Nov 26, 2026</span>
-                <span>2:00 PM - 5:00 PM</span>
-              </div>
-              <h3 class="card-title"><a href="events.html">First Term Parent-Teacher Academic Conference</a></h3>
-              <p class="card-desc">An interactive session for parents and subject tutors to review mid-term academic progress and personalized learning goals.</p>
-              <div class="card-footer">
-                <span style="font-size: 0.85rem; color: var(--color-text-muted);">📍 Classrooms & Hall</span>
-                <a href="events.html" class="btn btn-outline btn-sm">Event Details</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Event 3 -->
-          <article class="card">
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="badge badge-gold">🗓️ Fri, Dec 11, 2026</span>
-                <span>5:30 PM - 8:00 PM</span>
-              </div>
-              <h3 class="card-title"><a href="events.html">Christmas Carol & Orchestral Concert</a></h3>
-              <p class="card-desc">Celebrate the festive season with musical renditions, choral harmonies, and theatrical performances by our academy students.</p>
-              <div class="card-footer">
-                <span style="font-size: 0.85rem; color: var(--color-text-muted);">📍 College Chapel</span>
-                <a href="events.html" class="btn btn-outline btn-sm">Event Details</a>
-              </div>
-            </div>
-          </article>
+        <!-- Dynamic Home Events Container -->
+        <div id="home-events-container">
+          <!-- Rendered by js/home.js -->
         </div>
 
         <div style="text-align: center; margin-top: 2rem;">
@@ -448,6 +358,7 @@
 
   <!-- Scripts -->
   <script src="js/public.js"></script>
+  <script type="module" src="js/home.js"></script>
   <script type="module" src="js/testConnection.js"></script>
 </body>
 </html>

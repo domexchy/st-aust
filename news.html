@@ -73,48 +73,9 @@
 
     <section class="section section-white">
       <div class="container">
-        <div class="info-box" style="margin-bottom: 2rem;">
-          <div class="info-box-title">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            <span>Dynamic Data Feed (Phase 3)</span>
-          </div>
-          <p style="margin-bottom: 0;">This news feed will connect directly to the Supabase <code>news</code> table in Phase 3 to show real-time published articles and slugs.</p>
-        </div>
-
-        <div class="card-grid">
-          <article class="card">
-            <img src="images/classroom-academics.jpg" alt="Students in science lab" class="card-img" loading="lazy">
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="badge badge-gold">Academics</span>
-                <time datetime="2026-10-15">October 15, 2026</time>
-              </div>
-              <h3 class="card-title">St. Augustine Students Triumph at National STEM Olympiad</h3>
-              <p class="card-desc">Our Junior Secondary robotics team clinched first place with their solar-powered autonomous agriculture drone innovation.</p>
-            </div>
-          </article>
-          <article class="card">
-            <img src="images/hero-campus.jpg" alt="School campus event" class="card-img" loading="lazy">
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="badge badge-primary">Campus Life</span>
-                <time datetime="2026-10-08">October 8, 2026</time>
-              </div>
-              <h3 class="card-title">Annual Inter-House Sports Gala Announced</h3>
-              <p class="card-desc">Preparations are underway for the 2026 Athletics tournament featuring track, swimming, basketball, and artistic gymnastic displays.</p>
-            </div>
-          </article>
-          <article class="card">
-            <img src="images/principal-portrait.jpg" alt="Principal Dr Adeleke" class="card-img" loading="lazy">
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="badge badge-gold">Admissions</span>
-                <time datetime="2026-09-28">September 28, 2026</time>
-              </div>
-              <h3 class="card-title">2026/2027 Admissions Open for Early Years & Secondary</h3>
-              <p class="card-desc">Applications are officially invited for prospective students into Nursery, Primary and Year 7 through 10 classes.</p>
-            </div>
-          </article>
+        <!-- Dynamic News Container -->
+        <div id="news-list-container">
+          <!-- Dynamic Content rendered by js/news.js -->
         </div>
       </div>
     </section>
@@ -130,5 +91,6 @@
     </div>
   </footer>
   <script src="js/public.js"></script>
+  <script type="module" src="js/news.js"></script>
 </body>
 </html>
