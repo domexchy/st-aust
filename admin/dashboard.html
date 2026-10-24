@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | St. Augustine International Academy</title>
+  <meta name="description" content="Administrative control center for St. Augustine International Academy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="admin-body">
+
+  <!-- Authentication Loading Overlay -->
+  <div id="admin-auth-loading" style="position: fixed; inset: 0; background: #0f172a; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff;">
+    <div class="btn-spinner" style="width: 36px; height: 36px; border-width: 3px; border-color: var(--color-accent); border-right-color: transparent; margin-bottom: 1rem;"></div>
+    <p style="font-size: 0.95rem; color: #cbd5e1;">Verifying administrator credentials...</p>
+  </div>
+
+  <!-- Shared Admin Header -->
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="dashboard.html" class="admin-brand">
+          <div class="brand-crest" style="width: 32px; height: 32px; font-size: 0.85rem;" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <span>St. Augustine</span>
+          <span class="admin-badge">Admin</span>
+        </a>
+
+        <!-- Admin Nav Links -->
+        <nav class="admin-nav" aria-label="Admin Navigation">
+          <a href="dashboard.html" class="admin-nav-link active">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="news.html" class="admin-nav-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 13a2 2 0 0 1-2-2V7m2 13a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+            <span>News</span>
+          </a>
+          <a href="events.html" class="admin-nav-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Events</span>
+          </a>
+          <a href="gallery.html" class="admin-nav-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Gallery</span>
+          </a>
+          <a href="messages.html" class="admin-nav-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Messages</span>
+          </a>
+          <a href="applications.html" class="admin-nav-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span>Applications</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- User Bar & Logout -->
+      <div class="admin-user-bar">
+        <div class="admin-user-info">
+          <span id="admin-user-name" class="admin-user-name">Administrator</span>
+          <span id="admin-user-role" class="admin-user-role">admin</span>
+        </div>
+        <button type="button" id="logout-btn" class="btn btn-outline btn-sm admin-logout-btn" style="border-color: #334155; color: #f8fafc; font-size: 0.8rem; padding: 6px 12px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <span>Log Out</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="admin-main">
+    <!-- Page Header -->
+    <div class="admin-page-header">
+      <div>
+        <h1 class="admin-title">Administrative Dashboard</h1>
+        <p class="admin-subtitle">Real-time overview of admissions, campus messages, and published public updates.</p>
+      </div>
+      <div style="display: flex; gap: 0.75rem;">
+        <a href="../index.html" target="_blank" rel="noopener" class="btn btn-outline btn-sm" style="background: #ffffff; color: #0f172a;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          <span>Open Public Website</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 1. Stats KPI Grid -->
+    <section class="admin-stats-grid" aria-label="System Metrics Summary">
+      <!-- Unread Messages Card -->
+      <div class="stat-card accent-red">
+        <div class="stat-header">
+          <span class="stat-label">Unread Messages</span>
+          <div class="stat-icon" style="color: #dc2626; background: #fee2e2;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+        </div>
+        <div id="stat-unread-messages" class="stat-num">...</div>
+        <div class="stat-footer">
+          <span style="color: #64748b;">Direct Inquiries</span>
+          <a href="messages.html" class="stat-link">View Inbox &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Pending Applications Card -->
+      <div class="stat-card accent-gold">
+        <div class="stat-header">
+          <span class="stat-label">Pending Applications</span>
+          <div class="stat-icon" style="color: #b45309; background: #fef3c7;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+        </div>
+        <div id="stat-pending-apps" class="stat-num">...</div>
+        <div class="stat-footer">
+          <span style="color: #64748b;">Awaiting Review</span>
+          <a href="applications.html" class="stat-link">Review Apps &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Published News Card -->
+      <div class="stat-card accent-blue">
+        <div class="stat-header">
+          <span class="stat-label">Published Articles</span>
+          <div class="stat-icon" style="color: var(--color-primary); background: var(--color-primary-subtle);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 13a2 2 0 0 1-2-2V7m2 13a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+          </div>
+        </div>
+        <div id="stat-published-news" class="stat-num">...</div>
+        <div class="stat-footer">
+          <span style="color: #64748b;">Live News Posts</span>
+          <a href="news.html" class="stat-link">Manage News &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Total Events Card -->
+      <div class="stat-card accent-purple">
+        <div class="stat-header">
+          <span class="stat-label">School Events</span>
+          <div class="stat-icon" style="color: #7c3aed; background: #ede9fe;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+        </div>
+        <div id="stat-events-count" class="stat-num">...</div>
+        <div class="stat-footer">
+          <span style="color: #64748b;">Academic Calendar</span>
+          <a href="events.html" class="stat-link">Manage Events &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Gallery Items Card -->
+      <div class="stat-card accent-green">
+        <div class="stat-header">
+          <span class="stat-label">Gallery Media</span>
+          <div class="stat-icon" style="color: #059669; background: #d1fae5;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+        </div>
+        <div id="stat-gallery-count" class="stat-num">...</div>
+        <div class="stat-footer">
+          <span style="color: #64748b;">Campus Photos</span>
+          <a href="gallery.html" class="stat-link">Manage Photos &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Quick Actions Shortcuts -->
+    <section class="admin-card">
+      <h2 class="admin-card-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <span>Content Management Shortcuts</span>
+      </h2>
+      <div class="quick-actions-grid">
+        <a href="news.html" class="quick-action-btn">
+          <div class="quick-action-icon">📝</div>
+          <span>News Manager</span>
+          <small style="color: #64748b; font-weight: 400;">Publish articles & stories</small>
+        </a>
+        <a href="events.html" class="quick-action-btn">
+          <div class="quick-action-icon">📅</div>
+          <span>Events Manager</span>
+          <small style="color: #64748b; font-weight: 400;">Add calendar events</small>
+        </a>
+        <a href="gallery.html" class="quick-action-btn">
+          <div class="quick-action-icon">📸</div>
+          <span>Gallery Manager</span>
+          <small style="color: #64748b; font-weight: 400;">Upload campus photos</small>
+        </a>
+        <a href="messages.html" class="quick-action-btn">
+          <div class="quick-action-icon">✉️</div>
+          <span>Inquiry Inbox</span>
+          <small style="color: #64748b; font-weight: 400;">Read & reply to parents</small>
+        </a>
+        <a href="applications.html" class="quick-action-btn">
+          <div class="quick-action-icon">🎓</div>
+          <span>Admission Desk</span>
+          <small style="color: #64748b; font-weight: 400;">Review student applications</small>
+        </a>
+      </div>
+    </section>
+
+    <!-- 3. Recent Activity Overviews -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-lg);">
+      <!-- Recent Messages Card -->
+      <div class="admin-card" style="padding: 0; overflow: hidden;">
+        <div style="padding: 1.25rem; border-bottom: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between;">
+          <h2 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0; color: #0f172a;">Recent Messages</h2>
+          <a href="messages.html" class="stat-link" style="font-size: 0.8rem;">View All &rarr;</a>
+        </div>
+        <div id="dashboard-recent-messages">
+          <div style="padding: 1.5rem; text-align: center; color: #64748b; font-size: 0.9rem;">
+            Loading recent messages...
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Applications Card -->
+      <div class="admin-card" style="padding: 0; overflow: hidden;">
+        <div style="padding: 1.25rem; border-bottom: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between;">
+          <h2 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0; color: #0f172a;">Recent Applications</h2>
+          <a href="applications.html" class="stat-link" style="font-size: 0.8rem;">View All &rarr;</a>
+        </div>
+        <div id="dashboard-recent-applications">
+          <div style="padding: 1.5rem; text-align: center; color: #64748b; font-size: 0.9rem;">
+            Loading recent applications...
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module">
+    import { checkAdminAuth, loadDashboardStats } from '../js/admin.js';
+
+    // Verify session & admin role on page load
+    const auth = await checkAdminAuth();
+    if (auth) {
+      // Load real-time KPI counts from Supabase
+      loadDashboardStats();
+    }
+  </script>
+</body>
+</html>

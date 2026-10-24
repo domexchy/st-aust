@@ -43,12 +43,12 @@ Phases 3 onward need the matching backend phases done (see the notes in brackets
 
 ## Phase 5: Admin login and protection
       *(needs backend Phase 3)*
-- [ ] Admin login page
-- [ ] Session check on every admin page (redirect if logged out)
-- [ ] Admin check (profile role) and "Access denied" for non-admins
-- [ ] Log out button
-- [ ] Admin dashboard with counts
-- [ ] **CHECKPOINT:** only my admin account can enter the admin area
+- [x] Admin login page
+- [x] Session check on every admin page (redirect if logged out)
+- [x] Admin check (profile role) and "Access denied" for non-admins
+- [x] Log out button
+- [x] Admin dashboard with counts
+- [x] **CHECKPOINT:** only my admin account can enter the admin area
 
 ## Phase 6: Admin content management
       *(needs backend Phase 2 and 4)*
@@ -83,3 +83,4 @@ Phases 3 onward need the matching backend phases done (see the notes in brackets
 ## Learning log
 - Something I learned about calling Supabase from the browser: When inserting records into tables with insert-only RLS policies (like contact messages and admissions), anonymous users do not have SELECT permission. If code attempts `.select()` after `.insert()` (or sends `Prefer: return=representation`), PostgREST throws a 42501 RLS policy violation. Leaving out `.select()` sends `Prefer: return=minimal` which cleanly succeeds with 201 Created and enforces zero-read security.
 - Something that broke and how I fixed it: Initial test script requested `return=representation` on an insert-only table, resulting in an expected 42501 error; switching to standard minimal insert return confirmed seamless 201 Created status and verified that anonymous visitors cannot read private submissions back.
+- Session and Role Authorization in Admin: Verifying authentication alone is insufficient for administrative portals; querying `profiles.role` for `admin` ensures that even authenticated non-admin accounts are immediately rejected with "Access Denied" and signed out to safeguard internal data.
