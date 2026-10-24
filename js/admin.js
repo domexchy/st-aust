@@ -221,6 +221,47 @@ export function initLoginForm() {
       submitBtn.innerHTML = originalBtnText;
     }
   });
+
+  // ---------------------------------------------------------------------------
+  // Google OAuth Sign-In Handler
+  // ---------------------------------------------------------------------------
+  const googleBtn = document.getElementById('google-login-btn');
+  if (googleBtn) {
+    googleBtn.addEventListener('click', async () => {
+      clearLoginBanner(statusMsg);
+      const originalGoogleText = googleBtn.innerHTML;
+      googleBtn.disabled = true;
+      googleBtn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span> Connecting to Google...';
+
+      try {
+        // Redirect destination: dynamically handles local dev and live GitHub Pages
+        const redirectParam = urlParams.get('redirect');
+        const targetUrl = redirectParam 
+          ? new URL(decodeURIComponent(redirectParam), window.location.href).href 
+          : new URL('dashboard.html', window.location.href).href;
+
+        const { data, error } = await supabase.auth.signInWithOAuth({
+          provider: 'google',
+          options: {
+            redirectTo: targetUrl
+          }
+        });
+
+        if (error) throw error;
+
+      } catch (err) {
+        console.error('Google OAuth error:', err);
+        showLoginBanner(
+          statusMsg, 
+          'error', 
+          'Google Sign-In Failed', 
+          err.message || 'Could not connect to Google. Please check your Supabase provider configuration.'
+        );
+        googleBtn.disabled = false;
+        googleBtn.innerHTML = originalGoogleText;
+      }
+    });
+  }
 }
 
 function showLoginBanner(container, type, title, message) {
