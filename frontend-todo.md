@@ -21,9 +21,9 @@ Phases 3 onward need the matching backend phases done (see the notes in brackets
 
 ## Phase 2: Connect to Supabase
 - [x] Add supabase-js CDN, `config.js` and `supabaseClient.js`
-- [ ] Log a simple test query to confirm the connection
+- [x] Log a simple test query to confirm the connection
       *(needs backend Phase 0 to 2)*
-- [ ] **CHECKPOINT:** published sample rows appear in the console
+- [x] **CHECKPOINT:** published sample rows appear in the console
 
 ## Phase 3: Dynamic public pages
 - [ ] News list page from `news` table
