@@ -176,6 +176,21 @@ function initContactForm() {
       return;
     }
 
+    // Anti-Spam Honeypot Verification:
+    // If an automated bot filled the invisible field, trap and pretend success without writing spam.
+    const hpInput = document.getElementById('contact-hp');
+    if (hpInput && hpInput.value.trim().length > 0) {
+      console.warn('Spam submission detected and discarded by honeypot filter.');
+      showStatusBanner(
+        statusMsg,
+        'success',
+        'Message Sent Successfully!',
+        'Thank you, your message has been received. Our administration will contact you shortly.'
+      );
+      form.reset();
+      return;
+    }
+
     // Disable button and show spinner
     const originalBtnHtml = submitBtn.innerHTML;
     submitBtn.disabled = true;
@@ -396,6 +411,21 @@ function initAdmissionForm() {
         'Please correct the highlighted fields before submitting.'
       );
       if (firstInvalidField) firstInvalidField.focus();
+      return;
+    }
+
+    // Anti-Spam Honeypot Verification:
+    // If an automated bot filled the invisible field, trap and pretend success without writing spam.
+    const hpInput = document.getElementById('admissions-hp');
+    if (hpInput && hpInput.value.trim().length > 0) {
+      console.warn('Spam application submission detected and discarded by honeypot filter.');
+      showStatusBanner(
+        statusMsg,
+        'success',
+        'Application Submitted Successfully!',
+        'Thank you! Your admission application has been registered with our Admissions Office. We will review your application and contact you via email shortly.'
+      );
+      form.reset();
       return;
     }
 

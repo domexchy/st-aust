@@ -1,0 +1,49 @@
+name: Nightly Database Backup
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # Executes nightly at 02:00 UTC
+  workflow_dispatch:      # Allows manual trigger via GitHub Actions UI
+
+jobs:
+  backup:
+    name: Backup Supabase Database
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install PostgreSQL Client Tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+
+      - name: Execute Database Backup (pg_dump)
+        env:
+          DATABASE_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          if [ -z "$DATABASE_URL" ]; then
+            echo "Error: SUPABASE_DB_URL secret is not set. Please add it to your repository secrets."
+            exit 1
+          fi
+
+          mkdir -p backups
+          TIMESTAMP=$(date +'%Y%m%d_%H%M%S')
+          BACKUP_FILE="backups/st_aust_backup_${TIMESTAMP}.dump"
+          
+          echo "Dumping database cluster to ${BACKUP_FILE}..."
+          pg_dump "$DATABASE_URL" \
+            -Fc --clean --if-exists --no-owner --no-privileges \
+            -f "$BACKUP_FILE"
+
+          echo "Computing checksum..."
+          sha256sum "$BACKUP_FILE" > "backups/checksum_${TIMESTAMP}.txt"
+          ls -lh backups/
+
+      - name: Upload Backup Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: db-backup-${{ github.run_id }}
+          path: backups/
+          retention-days: 30

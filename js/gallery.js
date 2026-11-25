@@ -9,6 +9,8 @@ import { escapeHtml, renderLoading, renderEmpty, renderError } from './utils.js'
 
 let allGalleryItems = [];
 let activeAlbum = 'All';
+let currentGalleryPage = 1;
+const GALLERY_PAGE_SIZE = 9;
 
 document.addEventListener('DOMContentLoaded', () => {
   const galleryContainer = document.getElementById('gallery-items-container');
@@ -65,6 +67,7 @@ export async function initGallery(gridContainer, filtersContainer, lightboxModal
           filtersContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           activeAlbum = btn.getAttribute('data-album');
+          currentGalleryPage = 1;
           renderFilteredGrid(gridContainer);
         });
       });
@@ -99,9 +102,13 @@ function renderFilteredGrid(container) {
     return;
   }
 
+  const totalPages = Math.ceil(filtered.length / GALLERY_PAGE_SIZE);
+  const startIdx = (currentGalleryPage - 1) * GALLERY_PAGE_SIZE;
+  const pageItems = filtered.slice(startIdx, startIdx + GALLERY_PAGE_SIZE);
+
   container.innerHTML = `
     <div class="gallery-grid">
-      ${filtered.map(item => `
+      ${pageItems.map(item => `
         <div 
           class="gallery-item" 
           tabindex="0" 
@@ -125,7 +132,29 @@ function renderFilteredGrid(container) {
         </div>
       `).join('')}
     </div>
+    ${totalPages > 1 ? `
+      <nav class="gallery-filters" aria-label="Gallery pagination" style="margin-top: 2.5rem; margin-bottom: 0;">
+        <button type="button" class="filter-btn" data-gallery-page="${currentGalleryPage - 1}" ${currentGalleryPage === 1 ? 'disabled' : ''}>&larr; Prev</button>
+        <span style="display: inline-flex; align-items: center; padding: 0 0.75rem; font-size: 0.875rem; color: #94a3b8;">
+          Page ${currentGalleryPage} of ${totalPages}
+        </span>
+        <button type="button" class="filter-btn" data-gallery-page="${currentGalleryPage + 1}" ${currentGalleryPage === totalPages ? 'disabled' : ''}>Next &rarr;</button>
+      </nav>
+    ` : ''}
   `;
+
+  if (totalPages > 1) {
+    container.querySelectorAll('[data-gallery-page]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const nextPage = Number(btn.getAttribute('data-gallery-page'));
+        if (nextPage >= 1 && nextPage <= totalPages) {
+          currentGalleryPage = nextPage;
+          renderFilteredGrid(container);
+          container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  }
 
   // Attach click & enter key event listeners to open lightbox
   container.querySelectorAll('.gallery-item').forEach(el => {

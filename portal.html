@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parent Portal & Application Status | St. Augustine International Academy</title>
+  <meta name="description" content="Check your child's admission application status in real-time through the St. Augustine International Academy Parent Portal.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mascot-theme.css">
+</head>
+<body class="mascot-theme">
+
+  <!-- Skip Link for Accessibility -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Shared Site Header -->
+  <header class="site-header">
+    <div class="header-topbar">
+      <div class="container">
+        <div class="topbar-info">
+          <span>📍 14 Heritage Way, Victoria Island, Lagos</span>
+          <a href="tel:+2348012345678">📞 +234 801 234 5678</a>
+          <a href="mailto:admissions@staugustine.edu">✉️ admissions@staugustine.edu</a>
+        </div>
+        <div class="topbar-links">
+          <span>🕒 Mon - Fri: 7:30 AM - 4:30 PM</span>
+          <a href="portal.html" class="active" title="Parent Portal">👨‍👩‍👧 Parent Portal</a>
+          <a href="admin/login.html" title="Staff & Admin Portal">🔒 Staff Login</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="header-main">
+        <a href="index.html" class="brand" aria-label="St. Augustine International Academy Home">
+          <div class="brand-crest" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">St. Augustine</span>
+            <span class="brand-motto">International Academy</span>
+          </div>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+
+        <nav id="primary-navigation" class="nav-menu" aria-label="Main Navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="academics.html" class="nav-link">Academics</a>
+          <a href="admissions.html" class="nav-link">Admissions</a>
+          <a href="news.html" class="nav-link">News</a>
+          <a href="events.html" class="nav-link">Events</a>
+          <a href="gallery.html" class="nav-link">Gallery</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="admissions.html#apply-form" class="btn btn-primary btn-sm nav-cta">Apply Now</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Page Hero Banner -->
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <a href="admissions.html">Admissions</a>
+          <span>/</span>
+          <span aria-current="page">Parent Portal</span>
+        </nav>
+        <h1 id="page-title" class="page-hero-title">Parent Application Portal</h1>
+        <p class="page-hero-desc">Track your child's enrollment progress, view real-time assessment feedback, and stay connected with our admissions committee.</p>
+      </div>
+    </section>
+
+    <!-- Main Container -->
+    <section class="section section-white">
+      <div class="container" style="max-width: 900px;">
+
+        <!-- 1. AUTHENTICATION VIEW (Visible when logged out) -->
+        <div id="portal-auth-view" class="form-card" style="max-width: 520px; margin: 0 auto;">
+          <div style="text-align: center; margin-bottom: 1.75rem;">
+            <div style="width: 52px; height: 52px; background-color: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.35); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem auto; font-size: 1.5rem;" aria-hidden="true">
+              👨‍👩‍👧
+            </div>
+            <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #ffffff;">Parent Sign In</h2>
+            <p style="font-size: 0.875rem; color: #94a3b8; margin-bottom: 0;">
+              Enter the parent email address used when submitting your admission application to track its status.
+            </p>
+          </div>
+
+          <div id="auth-status-msg" class="form-status-msg" role="status" aria-live="polite"></div>
+
+          <form id="parent-login-form" novalidate aria-label="Parent Sign In Form">
+            <div class="form-group">
+              <label for="parent-email" class="form-label">
+                <span>Parent Email Address</span>
+                <span class="required-star" aria-hidden="true">*</span>
+              </label>
+              <input 
+                type="email" 
+                id="parent-email" 
+                name="email" 
+                class="form-control" 
+                placeholder="e.g. parent@example.com" 
+                required 
+                autocomplete="email">
+            </div>
+
+            <div class="form-group">
+              <label for="parent-password" class="form-label">
+                <span>Password</span>
+                <span class="required-star" aria-hidden="true">*</span>
+              </label>
+              <input 
+                type="password" 
+                id="parent-password" 
+                name="password" 
+                class="form-control" 
+                placeholder="••••••••••••" 
+                required 
+                autocomplete="current-password">
+            </div>
+
+            <button type="submit" id="parent-login-btn" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+              Sign In to Parent Portal
+            </button>
+          </form>
+
+          <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.85rem; color: #94a3b8; line-height: 1.6;">
+            <strong style="color: #e2e8f0;">Security Notice:</strong>
+            Applications are protected by Supabase Row Level Security (RLS). You can only access application records matching your authenticated parent email address.
+          </div>
+        </div>
+
+        <!-- 2. DASHBOARD VIEW (Visible when logged in) -->
+        <div id="portal-dashboard-view" style="display: none;">
+          <!-- Header Bar with User Email & Sign Out -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; background: rgba(20, 20, 40, 0.75); padding: 1.25rem 1.5rem; border-radius: var(--radius-lg); border: 1px solid rgba(255, 255, 255, 0.12); flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: #94a3b8; font-weight: 700;">Logged in as Parent</span>
+              <div id="user-display-email" style="font-weight: 600; color: #ffffff; font-size: 1.1rem; word-break: break-all;"></div>
+            </div>
+            <button id="parent-logout-btn" type="button" class="btn btn-outline btn-sm">
+              Sign Out
+            </button>
+          </div>
+
+          <!-- Applications Section -->
+          <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+            <h2 class="section-title" style="font-size: 1.5rem;">Your Child's Application Status</h2>
+            <p class="section-desc">Below are the real-time details of all admission applications associated with your account.</p>
+          </div>
+
+          <!-- Applications List Container -->
+          <div id="applications-container">
+            <div style="text-align: center; padding: 3rem 1rem; color: var(--color-text-muted);">
+              <div class="btn-spinner" style="margin: 0 auto 1rem auto; width: 32px; height: 32px; border-width: 3px;" aria-hidden="true"></div>
+              <p>Fetching your application status from the admissions database...</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <div class="brand-crest" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <span class="brand-name" style="color: #ffffff;">St. Augustine International Academy</span>
+          </div>
+          <p class="footer-desc">Nurturing academic brilliance, moral integrity, and global leadership in Victoria Island, Lagos.</p>
+        </div>
+        <div>
+          <h3 class="footer-heading">Admissions</h3>
+          <ul class="footer-links">
+            <li><a href="admissions.html">Admissions Overview</a></li>
+            <li><a href="admissions.html#apply-form">Online Application</a></li>
+            <li><a href="portal.html">Parent Portal Status</a></li>
+            <li><a href="contact.html">Campus Tour</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-heading">Direct Inquiries</h3>
+          <p style="font-size: 0.875rem; color: var(--color-border); margin-bottom: 0.5rem;">Victoria Island, Lagos, Nigeria</p>
+          <p style="font-size: 0.875rem; color: var(--color-border); margin-bottom: 0.5rem;">📞 +234 801 234 5678</p>
+          <p style="font-size: 0.875rem; color: var(--color-border);">✉️ admissions@staugustine.edu</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 St. Augustine International Academy. All rights reserved.</p>
+        <p><a href="admin/login.html">Administrative Staff Portal</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module" src="js/public.js"></script>
+  <script type="module" src="js/portal.js"></script>
+</body>
+</html>

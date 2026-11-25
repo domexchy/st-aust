@@ -451,6 +451,17 @@ async function loadRecentApplicationsPreview() {
 }
 
 /* =============================================================================
+   HELPER: Resolve relative image paths from /admin/ directory
+   ============================================================================= */
+function resolveAdminImageUrl(url, fallback = '../images/hero-campus.jpg') {
+  if (!url) return fallback;
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('/') || url.startsWith('../') || url.startsWith('data:')) {
+    return url;
+  }
+  return `../${url}`;
+}
+
+/* =============================================================================
    HELPER: Upload file to Supabase Storage bucket 'school-media'
    ============================================================================= */
 async function uploadMediaFile(file, folder = 'general') {
@@ -564,7 +575,7 @@ export async function initNewsManager() {
       tableBody.innerHTML = posts.map(post => `
         <tr>
           <td style="width: 72px;">
-            <img src="${escapeHtml(post.cover_image_url || '../images/placeholder-school.jpg')}" alt="" style="width: 60px; height: 42px; object-fit: cover; border-radius: 4px; background: #e2e8f0;">
+            <img src="${escapeHtml(resolveAdminImageUrl(post.cover_image_url))}" alt="" style="width: 60px; height: 42px; object-fit: cover; border-radius: 4px; background: #e2e8f0;">
           </td>
           <td>
             <strong style="color: #0f172a; display: block;">${escapeHtml(post.title)}</strong>
@@ -734,7 +745,7 @@ export async function initEventsManager() {
       idInput.value = item.id;
       titleInput.value = item.title || '';
       dateInput.value = item.event_date || '';
-      startTimeInput.value = item.start_time || '';
+      startTimeInput.value = item.time || item.start_time || '';
       endTimeInput.value = item.end_time || '';
       locationInput.value = item.location || '';
       descInput.value = item.description || '';
@@ -781,7 +792,7 @@ export async function initEventsManager() {
             <small style="color: #64748b;">📍 ${escapeHtml(evt.location)}</small>
           </td>
           <td><strong>${formatDate(evt.event_date)}</strong></td>
-          <td>${evt.start_time ? escapeHtml(evt.start_time.slice(0, 5)) + (evt.end_time ? ' - ' + escapeHtml(evt.end_time.slice(0, 5)) : '') : 'Full Day'}</td>
+          <td>${escapeHtml(evt.time || (evt.start_time ? evt.start_time.slice(0, 5) + (evt.end_time ? ' - ' + evt.end_time.slice(0, 5) : '') : 'Full Day'))}</td>
           <td>
             <span class="status-badge ${evt.is_published ? 'published' : 'draft'}">
               ${evt.is_published ? 'Published' : 'Draft'}
@@ -842,10 +853,11 @@ export async function initEventsManager() {
 
     const title = titleInput.value.trim();
     const eventDate = dateInput.value;
-    const startTime = startTimeInput.value || null;
-    const endTime = endTimeInput.value || null;
+    const startTime = startTimeInput.value.trim();
+    const endTime = endTimeInput.value.trim();
+    const combinedTime = startTime ? (endTime ? `${startTime} (${endTime})` : startTime) : '9:00 AM - 2:00 PM';
     const location = locationInput.value.trim();
-    const description = descInput.value.trim() || null;
+    const description = descInput.value.trim() || 'School community event.';
     const isPublished = publishedCheckbox.checked;
     const eventId = idInput.value;
 
@@ -861,8 +873,7 @@ export async function initEventsManager() {
       const payload = {
         title,
         event_date: eventDate,
-        start_time: startTime,
-        end_time: endTime,
+        time: combinedTime,
         location,
         description,
         is_published: isPublished
@@ -953,7 +964,7 @@ export async function initGalleryManager() {
 
       grid.innerHTML = items.map(item => `
         <div class="admin-gallery-card">
-          <img src="${escapeHtml(item.image_url)}" alt="${escapeHtml(item.caption || '')}" class="admin-gallery-thumb" loading="lazy">
+          <img src="${escapeHtml(resolveAdminImageUrl(item.image_url))}" alt="${escapeHtml(item.caption || '')}" class="admin-gallery-thumb" loading="lazy">
           <div class="admin-gallery-body">
             <div>
               <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 6px;">

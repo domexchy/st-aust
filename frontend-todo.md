@@ -75,9 +75,9 @@ Phases 3 onward need the matching backend phases done (see the notes in brackets
 - [ ] Share the link with the school for feedback
 
 ## Stretch
-- [ ] Honeypot or CAPTCHA on forms
-- [ ] Album filter and pagination on gallery and news
-- [ ] Student/parent portal (needs a new backend role)
+- [x] Honeypot or CAPTCHA on forms (`contact.html`, `admissions.html`, `js/forms.js`)
+- [x] Album filter and pagination on gallery and news (`js/gallery.js`, `js/news.js`)
+- [x] Student/parent portal (`portal.html`, `js/portal.js`, `supabase/06_parent_portal.sql`)
 - [ ] Online fee payment
 
 ## Learning log
@@ -87,5 +87,6 @@ Phases 3 onward need the matching backend phases done (see the notes in brackets
 - Full Admin Content Operations: Creating reusable modal dialogs with dual file-upload and URL fallbacks enables smooth media publishing, while interactive filtering and real-time status toggles provide a responsive, single-page-like experience across all school administration managers.
 - Accessibility, Performance & Web Polish: Implementing skip-to-content links (`#main`) paired with `:focus-visible` styling provides seamless keyboard navigation. High-quality bicubic image compression reduced initial campus image payloads by over 80% (saving 2+ MB), while standardized Open Graph social tags, an SVG favicon, and a branded 404 error page ensure a professional, production-grade web presence.
 - Production Vercel Deployment & URL Routing: Static hostings default to strict path matching, which results in 404s when users navigate to clean URLs (like `/about` or `/contact`) or `/admin/`. Adding `vercel.json` with `cleanUrls: true` and an `admin/index.html` fallback redirect ensures smooth navigation for all staff and public visitors, while maintaining optimal security headers.
+- Mobile-First Dark Theme & Responsive Architecture: Unified the mobile hamburger navigation drawer across both the playful mascot landing page (`index.html`) and all inside subpages (`about.html`, `academics.html`, `admissions.html`, `contact.html`, `portal.html`, `404.html`), reordered hero elements via CSS flexbox `order` on mobile viewports so primary headlines and CTAs appear above the fold before floating chat bubbles, and added responsive wrapping and touch-scrollable navigation bars to the Admin portal.
 
 

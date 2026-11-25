@@ -2499,3 +2499,139 @@ button:disabled, .btn:disabled {
   word-break: break-word;
 }
 
+/* --------------------------------------------------------------------------
+   22. Admin Portal & Global Mobile Responsiveness Enhancements
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .admin-header-inner {
+    flex-wrap: wrap;
+    position: relative;
+    padding: 0.65rem 1rem;
+  }
+
+  .admin-header-inner > div:first-child {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.5rem !important;
+  }
+
+  .admin-brand {
+    min-height: 36px;
+    padding-right: 110px; /* Space for top-right logout bar */
+  }
+
+  .admin-user-bar {
+    position: absolute;
+    top: 0.65rem;
+    right: 1rem;
+    gap: 0.5rem;
+  }
+
+  .admin-nav {
+    width: 100%;
+    order: 3;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 0.55rem;
+    margin-top: 0.2rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .admin-nav-link {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.825rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-user-info {
+    display: none;
+  }
+
+  .admin-main {
+    padding: var(--space-lg) 0.85rem;
+  }
+
+  .admin-title {
+    font-size: 1.4rem;
+  }
+
+  .admin-stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+    gap: 0.75rem;
+  }
+
+  .stat-card {
+    padding: 1.15rem;
+  }
+
+  .stat-num {
+    font-size: 1.75rem;
+  }
+
+  .admin-card {
+    padding: 1.25rem;
+  }
+
+  .quick-actions-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
+    gap: 0.75rem;
+  }
+
+  .admin-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.85rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .admin-search-input {
+    width: 100%;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.825rem;
+  }
+
+  .admin-modal-backdrop {
+    padding: 0.75rem;
+  }
+
+  .admin-modal {
+    max-height: 92vh;
+    border-radius: var(--radius-lg);
+  }
+
+  .admin-modal-header,
+  .admin-modal-body,
+  .admin-modal-footer {
+    padding: 1rem 1.15rem;
+  }
+
+  .admin-modal-footer {
+    flex-wrap: wrap;
+  }
+
+  .lightbox-modal {
+    padding: 1rem;
+  }
+
+  .lightbox-close {
+    top: -42px;
+    right: 0;
+  }
+
+  .article-body {
+    font-size: 1rem;
+  }
+
+  .article-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+

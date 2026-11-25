@@ -42,8 +42,8 @@ function initMobileNav() {
     }
   });
 
-  // Close menu when clicking any nav link (e.g. anchor links)
-  const navLinks = navMenu.querySelectorAll('.nav-link');
+  // Close menu when clicking any nav link or action button
+  const navLinks = navMenu.querySelectorAll('a');
   navLinks.forEach((link) => {
     link.addEventListener('click', () => {
       if (window.innerWidth < 1024) {

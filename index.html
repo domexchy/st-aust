@@ -40,21 +40,31 @@
         </div>
       </a>
 
-      <!-- Desktop Nav Links -->
-      <nav class="mascot-nav-links" aria-label="Primary Navigation">
-        <a href="about.html" class="mascot-nav-link">About</a>
-        <a href="academics.html" class="mascot-nav-link">Academics</a>
-        <a href="admissions.html" class="mascot-nav-link">Admissions</a>
-        <a href="news.html" class="mascot-nav-link">News</a>
-        <a href="events.html" class="mascot-nav-link">Events</a>
-        <a href="gallery.html" class="mascot-nav-link">Gallery</a>
-        <a href="contact.html" class="mascot-nav-link">Contact</a>
-      </nav>
+      <!-- Mobile Hamburger Toggle Button -->
+      <button class="nav-toggle mascot-nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
 
-      <!-- Right Action Pill Buttons -->
-      <div class="mascot-nav-actions">
-        <a href="admin/login.html" class="pill-btn pill-btn-ghost" title="Staff Portal">🔒 Staff Login</a>
-        <a href="admissions.html" class="pill-btn pill-btn-gold">Apply for 2026 ↗</a>
+      <!-- Responsive Navigation Drawer / Desktop Row -->
+      <div id="primary-navigation" class="mascot-nav-collapse nav-menu">
+        <nav class="mascot-nav-links" aria-label="Primary Navigation">
+          <a href="about.html" class="mascot-nav-link nav-link">About</a>
+          <a href="academics.html" class="mascot-nav-link nav-link">Academics</a>
+          <a href="admissions.html" class="mascot-nav-link nav-link">Admissions</a>
+          <a href="news.html" class="mascot-nav-link nav-link">News</a>
+          <a href="events.html" class="mascot-nav-link nav-link">Events</a>
+          <a href="gallery.html" class="mascot-nav-link nav-link">Gallery</a>
+          <a href="contact.html" class="mascot-nav-link nav-link">Contact</a>
+          <a href="portal.html" class="mascot-nav-link nav-link">Parent Portal</a>
+        </nav>
+
+        <!-- Right Action Pill Buttons -->
+        <div class="mascot-nav-actions">
+          <a href="admin/login.html" class="pill-btn pill-btn-ghost" title="Staff Portal">🔒 Staff Login</a>
+          <a href="admissions.html" class="pill-btn pill-btn-gold">Apply for 2026 ↗</a>
+        </div>
       </div>
     </div>
   </header>
@@ -95,7 +105,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="hero-main-copy">
         <h1 id="hero-title" class="hero-stacked-headline">
           <span>WHERE SCHOLARS</span>
           <span>FIND THEIR</span>
@@ -105,12 +115,12 @@
           St. Augustine International Academy: Pre-K through Grade 12 Cambridge International benchmarks, STEM robotics labs, and purposeful leadership in Victoria Island, Lagos.
         </p>
 
-        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-          <a href="admissions.html" class="pill-btn pill-btn-primary" style="font-size: 1rem; padding: 0.85rem 2rem;">
+        <div class="hero-cta-group">
+          <a href="admissions.html" class="pill-btn pill-btn-primary hero-cta-btn">
             <span>Enroll for 2026 / 2027</span>
             <span aria-hidden="true">→</span>
           </a>
-          <a href="about.html" class="pill-btn pill-btn-ghost" style="font-size: 1rem; padding: 0.85rem 2rem;">
+          <a href="about.html" class="pill-btn pill-btn-ghost hero-cta-btn">
             <span>Explore Our Heritage</span>
           </a>
         </div>
@@ -522,6 +532,7 @@
 
   <!-- Supabase CDN & Client Script -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/public.js"></script>
   <script type="module" src="js/home.js"></script>
 
   <!-- Interactive Pill Chips Filter Script for Care Section -->

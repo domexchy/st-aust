@@ -26,19 +26,21 @@
   <!-- Shared Site Header -->
   <header class="site-header">
     <div class="container">
-      <div class="header-inner">
+      <div class="header-main">
         <a href="index.html" class="brand" aria-label="St. Augustine International Academy Homepage">
           <div class="brand-crest" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           </div>
           <div class="brand-text">
             <span class="brand-name">St. Augustine</span>
-            <span class="brand-sub">International Academy</span>
+            <span class="brand-motto">International Academy</span>
           </div>
         </a>
 
-        <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">
-          <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+        <button class="nav-toggle" type="button" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
         </button>
 
         <nav class="nav-menu" id="primary-nav" aria-label="Primary Navigation">
@@ -56,13 +58,13 @@
     </div>
   </header>
 
-  <main id="main" style="min-height: 60vh; display: flex; align-items: center; justify-content: center; padding: 4rem 1.5rem;">
+  <main id="main" style="min-height: 60vh; display: flex; align-items: center; justify-content: center; padding: 4rem 1.25rem;">
     <div class="container" style="max-width: 680px; text-align: center;">
-      <div style="font-size: 5rem; font-family: var(--font-heading); font-weight: 800; color: var(--color-primary); line-height: 1; margin-bottom: 1rem;">
+      <div style="font-size: clamp(3.5rem, 12vw, 5.5rem); font-family: var(--font-heading); font-weight: 800; color: #fbbf24; line-height: 1; margin-bottom: 1rem;">
         404
       </div>
-      <h1 style="font-size: 2rem; color: #0f172a; margin-bottom: 1rem;">Page Not Found</h1>
-      <p style="font-size: 1.1rem; color: #64748b; line-height: 1.6; margin-bottom: 2.5rem;">
+      <h1 style="font-size: clamp(1.5rem, 4vw, 2.25rem); color: #ffffff; margin-bottom: 1rem;">Page Not Found</h1>
+      <p style="font-size: 1.05rem; color: #94a3b8; line-height: 1.6; margin-bottom: 2.5rem;">
         We apologize, but the page you are looking for might have been moved, updated, or does not exist. Please use the shortcuts below to explore the academy.
       </p>
 
@@ -81,8 +83,8 @@
 
       <div class="info-box" style="text-align: left; font-size: 0.9rem;">
         <strong>Looking for specific academic or administrative information?</strong>
-        <p style="margin-bottom: 0; margin-top: 4px; color: var(--color-text-body);">
-          Check our <a href="academics.html" style="font-weight: 600; color: var(--color-primary);">Curriculum Overview</a>, view <a href="news.html" style="font-weight: 600; color: var(--color-primary);">School News</a>, or call our reception directly at <a href="tel:+2348012345678" style="font-weight: 600;">+234 801 234 5678</a>.
+        <p style="margin-bottom: 0; margin-top: 4px;">
+          Check our <a href="academics.html" style="font-weight: 600; color: #fbbf24;">Curriculum Overview</a>, view <a href="news.html" style="font-weight: 600; color: #fbbf24;">School News</a>, or call our reception directly at <a href="tel:+2348012345678" style="font-weight: 600; color: #fbbf24;">+234 801 234 5678</a>.
         </p>
       </div>
     </div>

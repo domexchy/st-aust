@@ -20,8 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Loads published news articles into the news list page.
+ * Loads published news articles into the news list page with responsive pagination.
  */
+const NEWS_PAGE_SIZE = 6;
+let allNewsItems = [];
+let currentNewsPage = 1;
+
 export async function loadNewsList(container) {
   renderLoading(container, 'Loading school news & announcements...');
 
@@ -44,39 +48,71 @@ export async function loadNewsList(container) {
       return;
     }
 
-    container.innerHTML = `
-      <div class="card-grid">
-        ${newsItems.map(item => `
-          <article class="card">
-            <img 
-              src="${escapeHtml(item.cover_image_url || 'images/hero-campus.jpg')}" 
-              alt="${escapeHtml(item.title)}" 
-              class="card-img" 
-              loading="lazy"
-              decoding="async"
-            >
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="badge badge-gold">News</span>
-                <time datetime="${escapeHtml(item.published_at)}">${escapeHtml(formatDate(item.published_at))}</time>
-              </div>
-              <h3 class="card-title">
-                <a href="news-post.html?slug=${encodeURIComponent(item.slug)}">${escapeHtml(item.title)}</a>
-              </h3>
-              <p class="card-desc">${escapeHtml(item.summary)}</p>
-              <div class="card-footer">
-                <a href="news-post.html?slug=${encodeURIComponent(item.slug)}" class="btn btn-outline btn-sm">
-                  Read Full Article &rarr;
-                </a>
-              </div>
-            </div>
-          </article>
-        `).join('')}
-      </div>
-    `;
+    allNewsItems = newsItems;
+    currentNewsPage = 1;
+    renderNewsPage(container);
   } catch (err) {
     console.error('Unexpected error loading news:', err);
     renderError(container, 'An unexpected error occurred while loading news.', () => loadNewsList(container));
+  }
+}
+
+function renderNewsPage(container) {
+  const totalPages = Math.ceil(allNewsItems.length / NEWS_PAGE_SIZE);
+  const startIdx = (currentNewsPage - 1) * NEWS_PAGE_SIZE;
+  const pageItems = allNewsItems.slice(startIdx, startIdx + NEWS_PAGE_SIZE);
+
+  container.innerHTML = `
+    <div class="card-grid">
+      ${pageItems.map(item => `
+        <article class="card">
+          <img 
+            src="${escapeHtml(item.cover_image_url || 'images/hero-campus.jpg')}" 
+            alt="${escapeHtml(item.title)}" 
+            class="card-img" 
+            loading="lazy"
+            decoding="async"
+          >
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="badge badge-gold">News</span>
+              <time datetime="${escapeHtml(item.published_at)}">${escapeHtml(formatDate(item.published_at))}</time>
+            </div>
+            <h3 class="card-title">
+              <a href="news-post.html?slug=${encodeURIComponent(item.slug)}">${escapeHtml(item.title)}</a>
+            </h3>
+            <p class="card-desc">${escapeHtml(item.summary)}</p>
+            <div class="card-footer">
+              <a href="news-post.html?slug=${encodeURIComponent(item.slug)}" class="btn btn-outline btn-sm">
+                Read Full Article &rarr;
+              </a>
+            </div>
+          </div>
+        </article>
+      `).join('')}
+    </div>
+    ${totalPages > 1 ? `
+      <nav class="gallery-filters" aria-label="News pagination" style="margin-top: 2.5rem; margin-bottom: 0;">
+        <button type="button" class="filter-btn" data-page="${currentNewsPage - 1}" ${currentNewsPage === 1 ? 'disabled' : ''}>&larr; Prev</button>
+        <span style="display: inline-flex; align-items: center; padding: 0 0.75rem; font-size: 0.875rem; color: #94a3b8;">
+          Page ${currentNewsPage} of ${totalPages}
+        </span>
+        <button type="button" class="filter-btn" data-page="${currentNewsPage + 1}" ${currentNewsPage === totalPages ? 'disabled' : ''}>Next &rarr;</button>
+      </nav>
+    ` : ''}
+  `;
+
+  if (totalPages > 1) {
+    container.querySelectorAll('[data-page]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const nextPage = Number(btn.getAttribute('data-page'));
+        if (nextPage >= 1 && nextPage <= totalPages) {
+          currentNewsPage = nextPage;
+          renderNewsPage(container);
+          container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
   }
 }
 
@@ -159,10 +195,10 @@ export async function loadNewsPost(container) {
             <span class="badge badge-gold">Published Post</span>
             <time datetime="${escapeHtml(post.published_at)}">${escapeHtml(formatDate(post.published_at))}</time>
           </div>
-          <h1 style="font-size: clamp(1.85rem, 4.5vw, 2.75rem); margin-bottom: 1rem; color: var(--color-primary);">
+          <h1 class="article-title" style="font-size: clamp(1.75rem, 4.5vw, 2.75rem); margin-bottom: 1rem; color: #ffffff;">
             ${escapeHtml(post.title)}
           </h1>
-          <p class="section-desc" style="font-size: 1.15rem; color: var(--color-text-body); max-width: 720px; margin: 0 auto;">
+          <p class="section-desc" style="font-size: 1.1rem; color: #cbd5e1; max-width: 720px; margin: 0 auto;">
             ${escapeHtml(post.summary)}
           </p>
         </header>
